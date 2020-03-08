@@ -355,12 +355,24 @@ def integration_test_results():
         else:
             version['next_release'] = current_app.config.get('DEVEL_VERSION_NAME', 'undef')
 
+    failed_on = ''
+    for arg in flask.request.args:
+        if arg == 'failed_on':
+            failed_on = flask.request.args.get(arg)
+        else:
+            return flask.Response(
+                json.dumps({'Error': 'only able to filter on "failed on" field'}),
+                status=400,
+                content_type='application/json'
+            )
     fetch_querry = 'SELECT * FROM integration_tests'
     integration_test_results = db_access.execute(fetch_querry).fetchall()
     integration_test_results = db.format_fetchall(integration_test_results)
     integration_test_results = set_freshness(integration_test_results, 'created_at', duration = 1)
     integration_test_results = sorted(integration_test_results, key = lambda i: i['created_at'],reverse=True) 
 
+    if failed_on == 'today':
+        integration_test_results = [i for i in integration_test_results if i['freshness']<1]
 
     return flask.render_template(
         'jenkins/integration_test_results.html',
