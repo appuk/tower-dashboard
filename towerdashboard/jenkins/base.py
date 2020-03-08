@@ -375,7 +375,7 @@ def integration_test_results():
         integration_test_results = [i for i in integration_test_results if i['freshness']<1]
 
     return flask.render_template(
-        'jenkins/integration_test_results.html',
+        'jenkins/integration_test_results_new.html',
         versions=versions,
         integration_test_results=integration_test_results
     )

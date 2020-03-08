@@ -1,0 +1,282 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <title>Integration Test Results</title>
+  <div class="pf-c-page" id="page-layout-table-simple">
+      
+  <main role="main" class="pf-c-page__main" tabindex="-1" id="main-content-page-layout-table-simple">
+    <section class="pf-c-page__main-section pf-m-light">
+      <div class="pf-c-content">
+        <h1>Integration Test Results</h1>
+      </div>
+      <ul class="nav nav-tabs">
+        {% for version in versions %}
+          <li class="nav-item">
+              <a class="nav-link {% if loop.index == 1 %}active{% endif %}" data-toggle="tab" href="#release{{ version.id }}">Release {{ version.next_release }} {% if loop.index == 1 %}(devel){% endif %}</a>
+          </li>
+        {% endfor %}
+        </ul>
+    </section>
+    <section class="pf-c-page__main-section pf-m-no-padding-mobile">
+<div class="tab-content">
+    {% for version in versions %}
+        <div class="tab-pane {% if loop.index == 1 %}active{% endif %}" id="release{{ version.id }}">
+        <div class="pf-c-card">
+        <div class="pf-c-toolbar" id="page-layout-table-simple-toolbar-top">
+          <button class="pf-c-button pf-m-plain pf-c-toolbar__filter-toggle" type="button" aria-label="Filter results">
+            <i class="fas fa-filter" aria-hidden="true"></i>
+          </button>
+          <div class="pf-c-toolbar__filter">
+            <div class="pf-c-select">
+              <span id="page-layout-table-simple-toolbar-top-select-checkbox-label" hidden>Choose one</span>
+              <button class="pf-c-select__toggle" type="button" id="page-layout-table-simple-toolbar-top-select-checkbox-toggle" aria-haspopup="true" aria-expanded="false" aria-labelledby="page-layout-table-simple-toolbar-top-select-checkbox-label page-layout-table-simple-toolbar-top-select-checkbox-toggle">
+                <div class="pf-c-select__toggle-wrapper">
+                  <span class="pf-c-select__toggle-text">
+                    <i class="fas fa-filter" aria-hidden="true"></i>
+Name
+                  </span>
+                </div>
+                <i class="fas fa-caret-down pf-c-select__toggle-arrow" aria-hidden="true"></i>
+              </button>
+              <div class="pf-c-select__menu" hidden>
+                <form novalidate class="pf-c-form">
+                  <fieldset class="pf-c-form__fieldset" aria-labelledby="page-layout-table-simple-toolbar-top-select-checkbox-label">
+                    <label class="pf-c-check pf-c-select__menu-item" for="page-layout-table-simple-toolbar-top-select-checkbox-active">
+                      <input class="pf-c-check__input" type="checkbox" type="checkbox" id="page-layout-table-simple-toolbar-top-select-checkbox-active" name="page-layout-table-simple-toolbar-top-select-checkbox-active" />
+                      <span class="pf-c-check__label">Active</span>
+                    </label>
+                    <label class="pf-c-check pf-c-select__menu-item" for="page-layout-table-simple-toolbar-top-select-checkbox-cancelled">
+                      <input class="pf-c-check__input" type="checkbox" type="checkbox" id="page-layout-table-simple-toolbar-top-select-checkbox-cancelled" name="page-layout-table-simple-toolbar-top-select-checkbox-cancelled" />
+                      <span class="pf-c-check__label">Cancelled</span>
+                    </label>
+                    <label class="pf-c-check pf-c-select__menu-item" for="page-layout-table-simple-toolbar-top-select-checkbox-paused">
+                      <input class="pf-c-check__input" type="checkbox" type="checkbox" id="page-layout-table-simple-toolbar-top-select-checkbox-paused" name="page-layout-table-simple-toolbar-top-select-checkbox-paused" />
+                      <span class="pf-c-check__label">Paused</span>
+                    </label>
+                    <label class="pf-c-check pf-c-select__menu-item" for="page-layout-table-simple-toolbar-top-select-checkbox-warning">
+                      <input class="pf-c-check__input" type="checkbox" type="checkbox" id="page-layout-table-simple-toolbar-top-select-checkbox-warning" name="page-layout-table-simple-toolbar-top-select-checkbox-warning" />
+                      <span class="pf-c-check__label">Warning</span>
+                    </label>
+                    <label class="pf-c-check pf-c-select__menu-item" for="page-layout-table-simple-toolbar-top-select-checkbox-restarted">
+                      <input class="pf-c-check__input" type="checkbox" type="checkbox" id="page-layout-table-simple-toolbar-top-select-checkbox-restarted" name="page-layout-table-simple-toolbar-top-select-checkbox-restarted" />
+                      <span class="pf-c-check__label">Restarted</span>
+                    </label>
+                  </fieldset>
+                </form>
+              </div>
+            </div>
+          </div>
+          <div class="pf-c-options-menu pf-c-toolbar__sort">
+            <button class="pf-c-options-menu__toggle pf-m-plain" type="button" id="page-layout-table-simple-toolbar-top-options-menu-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Sort by">
+              <i class="fas fa-sort-amount-down" aria-hidden="true"></i>
+            </button>
+            <ul class="pf-c-options-menu__menu pf-c-toolbar__sort" aria-labelledby="page-layout-table-simple-toolbar-top-options-menu-toggle" hidden>
+              <li>
+                <ul aria-label="Sort by">
+                  <li>
+                    <button class="pf-c-options-menu__menu-item" type="button">Name</button>
+                  </li>
+                  <li>
+                    <button class="pf-c-options-menu__menu-item" type="button">Date
+                      <i class="fas fa-check pf-c-options-menu__menu-item-icon" aria-hidden="true"></i>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="pf-c-options-menu__menu-item" type="button" disabled>Disabled</button>
+                  </li>
+                  <li>
+                    <button class="pf-c-options-menu__menu-item" type="button">Size</button>
+                  </li>
+                </ul>
+              </li>
+              <li class="pf-c-options-menu__separator" role="separator"></li>
+              <li>
+                <ul aria-label="Sort direction">
+                  <li>
+                    <button class="pf-c-options-menu__menu-item" type="button">Ascending
+                      <i class="fas fa-check pf-c-options-menu__menu-item-icon" aria-hidden="true"></i>
+                    </button>
+                  </li>
+                  <li>
+                    <button class="pf-c-options-menu__menu-item" type="button">Descending</button>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+              <div class="pf-c-pagination" aria-label="Element pagination">
+            <div class="pf-c-pagination__total-items">
+              <b>1 - 5</b>of
+              <b>10</b>
+            </div>
+            <div class="pf-c-options-menu">
+              <div class="pf-c-options-menu__toggle pf-m-text pf-m-plain">
+                <span class="pf-c-options-menu__toggle-text">
+                  <b>1 - 10</b>of
+                  <b>37</b>
+                </span>
+                <button class="pf-c-options-menu__toggle-button" id="page-layout-table-simple-toolbar-top-pagination-options-menu-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Items per page">
+                  <i class="fas fa-caret-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <ul class="pf-c-options-menu__menu" aria-labelledby="page-layout-table-simple-toolbar-top-pagination-options-menu-toggle" hidden>
+                <li>
+                  <button class="pf-c-options-menu__menu-item" type="button">5
+                    <span class="pf-c-pagination__menu-text">per page</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="pf-c-options-menu__menu-item" type="button">10
+                    <span class="pf-c-pagination__menu-text">per page</span>
+                    <i class="fas fa-check pf-c-options-menu__menu-item-icon" aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="pf-c-options-menu__menu-item" type="button">20
+                    <span class="pf-c-pagination__menu-text">per page</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <nav class="pf-c-pagination__nav" aria-label="Pagination">
+              <button class="pf-c-button pf-m-plain pf-m-disabled" type="button" aria-label="Go to first page" aria-disabled="true">
+                <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+              </button>
+              <button class="pf-c-button pf-m-plain pf-m-disabled" type="button" aria-label="Go to previous page" aria-disabled="true">
+                <i class="fas fa-angle-left" aria-hidden="true"></i>
+              </button>
+              <div class="pf-c-pagination__nav-page-select" aria-label="Current page 1 of 4">
+                <input class="pf-c-form-control" aria-label="Current page" type="number" min="1" max="4" value="1" />
+                <span aria-hidden="true">of 4</span>
+              </div>
+              <button class="pf-c-button pf-m-plain" type="button" aria-label="Go to next page">
+                <i class="fas fa-angle-right" aria-hidden="true"></i>
+              </button>
+              <button class="pf-c-button pf-m-plain" type="button" aria-label="Go to last page">
+                <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+              </button>
+            </nav>
+          </div>
+          <div class="pf-c-toolbar__filter-list"></div>
+        </div>
+        <table class="pf-c-table pf-m-grid-xl" role="grid" aria-label="This is a table with checkboxes" id="page-layout-table-simple-table">
+          <thead>
+            <tr role="row">
+              <td class="pf-c-table__check" role="cell">
+                <input type="checkbox" name="check-all" aria-label="Select all rows" />
+              </td>
+              <th role="columnheader" scope="col">Test</th>
+              <th role="columnheader" scope="col">Deploy</th>
+              <th role="columnheader" scope="col">OS</th>
+              <th role="columnheader" scope="col">Bundle</th>
+              <th role="columnheader" scope="col">TLS</th>
+              <th role="columnheader" scope="col">FIPS</th>
+              <th role="columnheader" scope="col">Ansible</th>
+              <th role="columnheader" scope="col">Job URL</th>
+              <th role="columnheader" scope="col">Failed On</th>
+              <th role="columnheader" scope="col">Failing since</th>
+
+            </tr>
+          </thead>
+          <tbody role="rowgroup">
+            {% for test in integration_test_results %}
+            {% if test.tower_id == version.id %}
+            <tr role="row">
+              <td class="pf-c-table__check" role="cell">
+                <input type="checkbox" name="checkrow1" aria-labelledby="page-layout-table-simple-table-node1" />
+              </td>
+              <td role="cell" data-label="Test">
+                {{ test.test_name }}
+              </td>
+              <td role="cell" data-label="Deploy">
+                {{ test.deploy }}
+              </td>
+              <td role="cell" data-label="OS">
+                {{ test.platform }}
+              </td>
+              <td role="cell" data-label="Bundle">
+                {{ test.bundle }}
+              </td>
+              <td role="cell" data-label="TLS">
+                {{ test.tls }}
+              </td>
+              <td role="cell" data-label="FIPS">
+                {{ test.fips }}
+              </td>
+              <td role="cell" data-label="Ansible">
+                {{ test.ansible }}
+              </td>
+              <td role="cell" data-label="Job URL">
+                <a href={{ test.url }}>link</a>
+              </td>
+              <td role="cell" data-label="Failed On">
+                {{ test.created_at }}
+              </td>
+              <td role="cell" data-label="Failing since">
+                {{ test.failing_since }}
+            </tr>
+            {% endif %}
+            {% endfor %}
+          </tbody>
+        </table>
+        <div class="pf-c-toolbar" id="page-layout-table-simple-toolbar-bottom">
+          <div class="pf-c-pagination pf-m-footer" aria-label="Element pagination">
+            <div class="pf-c-options-menu">
+              <div class="pf-c-options-menu__toggle pf-m-text pf-m-plain">
+                <span class="pf-c-options-menu__toggle-text">
+                  <b>1 - 10</b>of
+                  <b>37</b>
+                </span>
+                <button class="pf-c-options-menu__toggle-button" id="page-layout-table-simple-toolbar-bottom-pagination-options-menu-text-toggle" aria-haspopup="listbox" aria-expanded="false" aria-label="Items per page">
+                  <i class="fas fa-caret-down" aria-hidden="true"></i>
+                </button>
+              </div>
+              <ul class="pf-c-options-menu__menu" aria-labelledby="page-layout-table-simple-toolbar-bottom-pagination-options-menu-text-toggle" hidden>
+                <li>
+                  <button class="pf-c-options-menu__menu-item" type="button">5
+                    <span class="pf-c-pagination__menu-text">per page</span>
+                  </button>
+                </li>
+                <li>
+                  <button class="pf-c-options-menu__menu-item" type="button">10
+                    <span class="pf-c-pagination__menu-text">per page</span>
+                    <i class="fas fa-check pf-c-options-menu__menu-item-icon" aria-hidden="true"></i>
+                  </button>
+                </li>
+                <li>
+                  <button class="pf-c-options-menu__menu-item" type="button">20
+                    <span class="pf-c-pagination__menu-text">per page</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+            <nav class="pf-c-pagination__nav" aria-label="Pagination">
+              <button class="pf-c-button pf-m-plain pf-m-disabled" type="button" aria-label="Go to first page" aria-disabled="true">
+                <i class="fas fa-angle-double-left" aria-hidden="true"></i>
+              </button>
+              <button class="pf-c-button pf-m-plain pf-m-disabled" type="button" aria-label="Go to previous page" aria-disabled="true">
+                <i class="fas fa-angle-left" aria-hidden="true"></i>
+              </button>
+              <div class="pf-c-pagination__nav-page-select" aria-label="Current page 1 of 4">
+                <input class="pf-c-form-control" aria-label="Current page" type="number" min="1" max="4" value="1" />
+                <span aria-hidden="true">of 4</span>
+              </div>
+              <button class="pf-c-button pf-m-plain" type="button" aria-label="Go to next page">
+                <i class="fas fa-angle-right" aria-hidden="true"></i>
+              </button>
+              <button class="pf-c-button pf-m-plain" type="button" aria-label="Go to last page">
+                <i class="fas fa-angle-double-right" aria-hidden="true"></i>
+              </button>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    </div>
+    
+    </section>
+  </main>
+</div>
+
+{% endblock %}
