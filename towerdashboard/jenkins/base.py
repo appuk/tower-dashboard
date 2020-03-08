@@ -365,8 +365,8 @@ def integration_test_results():
                 status=400,
                 content_type='application/json'
             )
-    fetch_querry = 'SELECT * FROM integration_tests'
-    integration_test_results = db_access.execute(fetch_querry).fetchall()
+    fetch_query = 'SELECT * FROM integration_tests'
+    integration_test_results = db_access.execute(fetch_query).fetchall()
     integration_test_results = db.format_fetchall(integration_test_results)
     integration_test_results = set_freshness(integration_test_results, 'created_at', duration = 1)
     integration_test_results = sorted(integration_test_results, key = lambda i: i['created_at'],reverse=True) 
