@@ -49,7 +49,7 @@
     <br/><br/>
 
     {% if version.issues %}
-    <h4>Issues (<a href="{{ version.issues.html_url}}">{{ version.issues.count }}</a> open | <a href="{{ version.issues.needs_test_html_url }}">{{ version.issues.needs_test_count }}</a> in needs_test)</h4>
+    <h4 id="issues">Issues (<a href="{{ version.issues.html_url}}">{{ version.issues.count }}</a> open | <a href="{{ version.issues.needs_test_html_url }}">{{ version.issues.needs_test_count }}</a> in needs_test)</h4>
     {% else %}
     <h4>Issues</h4>
     {% endif %}
@@ -96,8 +96,7 @@
     No issue labeled with <i>label:state:needs_test</i> for this milestone
     {% endif %}
     <br/><br/>
-    <h4>Integration Results</h4>
-    Click <a href="{{ url_for(endpoint='jenkins.integration_test_results') }}">here </a>for Detailed Test Failure Report
+    <h4 id="integration_results">Integration Results</h4>
     <hr/>
 
     <img src="{{ url_for('static', filename='green.png') }}"></img><img src="{{ url_for('static', filename='red.png') }}"></img><img src="{{ url_for('static', filename='yellow.png') }}"></img> Fresh results (Less than 2 days)
@@ -195,7 +194,7 @@
         </tbody>
     </table>
     <br/><br/>
-    <h4>Unstable Jobs</h4>
+    <h4 id="all_jobs">Unstable Jobs</h4>
     <hr/>
     {% set version_unstable_jobs = [] %}
     {% for job in unstable_jobs %}

@@ -21,8 +21,6 @@
     <h4>Integration Results</h4>
     <hr/>
     <br/>
-    <a href="{{ url_for(endpoint='jenkins.integration_test_results', failed_on='today') }}">Click here to see today's results </a>
-    <br/>
     <img src="{{ url_for('static', filename='green.png') }}"></img><img src="{{ url_for('static', filename='red.png') }}"></img><img src="{{ url_for('static', filename='yellow.png') }}"></img> Fresh results (Same day)
     <img style="opacity: 0.5;" src="{{ url_for('static', filename='green.png') }}"></img><img style="opacity: 0.5;" src="{{ url_for('static', filename='red.png') }}"></img><img style="opacity: 0.5;" src="{{ url_for('static', filename='yellow.png') }}"></img> Non fresh results (Previous test failures)
 
