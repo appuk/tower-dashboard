@@ -64,24 +64,23 @@ $closeBtn.click(function(){
 });
 
 $okBtn.click(function(){
+  var rows = $(tdObject).parents("table").find("tbody tr"); 
   filterGrid.find(".grid-item").each(function(ind,ele){  
     var rows = $(tdObject).parents("table").find("tbody tr");  
     if ($(ele).find("input").is(":checked")){
-      //$(arrayMap[ind]).show();
       for(var i = 0; i< rows.length; i++){
-        columns = $(rows[i]).find('td');
-        if($(rows[i]).text().includes($(ele).text())){
+        if($(rows[i]).text().includes($(ele).text()) && !$(rows[i]).is(":hidden")){
         $(rows[i]).show();
+        $(rows[i]).hidden = false
         }
       }
     }else{
       for(var i = 0; i< rows.length; i++){
-        columns = $(rows[i]).find('td');
         if($(rows[i]).text().includes($(ele).text())){
         $(rows[i]).hide();
+        $(rows[i]).hidden = true
         }
       }
-      //$(arrayMap[ind]).hide();
     }
   });
   filterGrid.hide();

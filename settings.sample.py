@@ -17,16 +17,16 @@
 
 
 # File path location for the SQLite3 database
-# SQLITE_PATH = '/tmp/towerdashboard.sqlite'
+# SQLITE_PATH = '/dashboard_devel/towerdashboard.sqlite'
 
 
 # GitHub token to make authenticated queries to the Tower repo
-# GITHUB_TOKEN =
+# GITHUB_TOKEN = ""
 
 
 # Github name of the Tower QE team repo
-# TOWERQA_REPO =
+# TOWERQA_REPO = "ansible/tower-qa"
 
 
 # Name of version in devel
-# DEVEL_VERSION_NAME = 3.5.0
+# DEVEL_VERSION_NAME = "3.5.0"
