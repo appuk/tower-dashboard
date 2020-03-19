@@ -80,10 +80,10 @@
           </thead>
           <tbody>
             {% for issue in version.issues.needs_test_issues %}
-            <tr style="{{ '' if issue.assignee != '' else 'background-color: #ffffbb' }}">
+            <tr style="{{ '' if issue.assignee != '' else ('background-color: #ffffdd' if 1!=1 else 'background-color: #808080')}}">
                 <td><a href="{{ issue.url }}">{{ issue.title }}</a></td>
                 <td>{{ issue.assignee if issue.assignee != '' else 'Nobody yet' }}</td>
-                <td>{{ issue.updated_at }}</td>
+                <td>{{ QE_assignee }}</td>
             </tr>
             {% endfor %}
           </tbody>

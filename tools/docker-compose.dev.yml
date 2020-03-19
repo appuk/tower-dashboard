@@ -13,6 +13,7 @@ services:
     image: ansible/dashboard-dev:latest
     environment:
       TOWERDASHBOARD_SETTINGS: "/dashboard_devel/settings.py"
+      TEMPLATES_AUTO_RELOAD: "True"
     volumes:
       - "../:/dashboard_devel"
     command:

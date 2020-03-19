@@ -384,6 +384,7 @@ def integration_test_results():
 @jenkins.route('/releases', strict_slashes=False)
 def releases():
     db_access = db.get_db()
+    #import sdb; sdb.listen()
 
     versions_query = 'SELECT * FROM tower_versions'
     versions = db_access.execute(versions_query).fetchall()
@@ -433,7 +434,7 @@ def releases():
         project_number = github.get_project_by_name('Ansible Tower {}'.format(version['next_release']))['number']
         version['project'] = 'https://github.com/orgs/ansible/projects/{}'.format(project_number)
         version['issues'] = serialize_issues('ansible/{}'.format(project_number))
-
+        
     return flask.render_template(
         'jenkins/releases.html',
         versions=versions,
