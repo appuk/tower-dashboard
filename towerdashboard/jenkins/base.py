@@ -24,6 +24,7 @@ from flask import current_app
 from towerdashboard import db
 from towerdashboard import github
 from towerdashboard.jenkins import jenkins
+from towerdashboard.data import base
 
 
 def form_tower_query(tower):
@@ -433,6 +434,8 @@ def releases():
         project_number = github.get_project_by_name('Ansible Tower {}'.format(version['next_release']))['number']
         version['project'] = 'https://github.com/orgs/ansible/projects/{}'.format(project_number)
         version['issues'] = serialize_issues('ansible/{}'.format(project_number))
+        for issue in version['issues']['needs_test_issues']:
+            issue['qe_or_not'] = any(item in issue['assignee'].split(", ") for item in base.QE_assignee)
 
     return flask.render_template(
         'jenkins/releases.html',

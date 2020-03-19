@@ -182,3 +182,5 @@ RESULTS = [
 #     {'release': 'release_3.2.9', 'os': 'rhel-7.4-x86_64', 'ansible': 'stable-2.7', 'status': 'SUCCESS', 'job_id': 24},
 #     {'release': 'release_3.2.9', 'os': 'centos-7.latest-x86_64', 'ansible': 'stable-2.7', 'status': 'FAILURE', 'job_id': 24},
 ]
+
+QE_assignee = ['appuk', 'squidboylan', 'dsesami', 'kdelee', 'elyezer', 'fpjrh', 'jneedle', 'unlikelyzero', 'nixocio', 'one-t', 'Spredzy']
