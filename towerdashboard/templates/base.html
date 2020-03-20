@@ -54,13 +54,13 @@
                 <section class="pf-c-nav__subnav" aria-labelledby="nav-mixed-link2">
                   <ul class="pf-c-nav__simple-list">
                     <li class="pf-c-nav__item">
-                      <a href="#issues" class="pf-c-nav__link">Issues</a>
+                      <a href="{{ url_for(endpoint='jenkins.releases') }}#issues" class="pf-c-nav__link">Issues</a>
                     </li>
                     <li class="pf-c-nav__item">
-                      <a href="#integration_results" class="pf-c-nav__link">Integration results</a>
+                      <a href="{{ url_for(endpoint='jenkins.releases') }}#integration_results" class="pf-c-nav__link">Integration results</a>
                     </li>
                     <li class="pf-c-nav__item">
-                      <a href="#all_jobs" class="pf-c-nav__link">All Jobs</a>
+                      <a href="{{ url_for(endpoint='jenkins.releases') }}#all_jobs" class="pf-c-nav__link">All Jobs</a>
                     </li>
                   </ul>
                 </section>
@@ -70,7 +70,7 @@
                 <section class="pf-c-nav__subnav" aria-labelledby="nav-mixed-link2">
                   <ul class="pf-c-nav__simple-list">
                     <li class="pf-c-nav__item">
-                      <a href="?failed_on=today" class="pf-c-nav__link">Latest Test Failures</a>
+                      <a href="{{ url_for(endpoint='jenkins.integration_test_results') }}?failed_on=today" class="pf-c-nav__link">Latest Test Failures</a>
                     </li>
                   </ul>
                 </section>
