@@ -70,8 +70,8 @@
 
     <div id="collapseIssues" class="collapse show" aria-labelledby="headingIssues" data-parent="#accordionIssues">
       <div class="card-body">
-        <img src="{{ url_for('static', filename='yellow_rectangle.png') }}"  height="30" width="50"></img> No QE assigned
-        <img src="{{ url_for('static', filename='grey_rectangle.png') }}" height="30" width="50"></img> Nobody assigned</br></br>
+        <img src="{{ url_for('static', filename='yellow_rectangle.png') }}" style="height: 30px; width: 30px"></img> No QE assigned
+        <img src="{{ url_for('static', filename='grey_rectangle.png') }}" style="height: 30px; width: 30px"></img> Nobody assigned</br></br>
         <table class="table table-bordered" style="border-collapse: collapse">
           <thead>
             <tr style="border-bottom: double">
@@ -115,26 +115,26 @@
       </thead>
       <tbody align="center">
         <tr>
-          <td>
+          <td style="text-align: center">
             <img src="{{ url_for('static', filename='green.png') }}"></img>
           </td>
-          <td>
+          <td style="text-align: center">
             No failures or regressions - Ready to ship it.
           </td>
         </tr>
         <tr>
-          <td>
+          <td style="text-align: center">
             <img src="{{ url_for('static', filename='yellow.png') }}"></img>
           </td>
-          <td>
+          <td style="text-align: center">
             Almost there - A few failures or regressions. Needs some attention.
           </td>
         </tr>
         <tr>
-          <td>
+          <td style="text-align: center">
             <img src="{{ url_for('static', filename='red.png') }}"></img>
           </td>
-          <td>
+          <td style="text-align: center">
             Possibly an infra issue. Needs some attention.
           </td>
         </tr>
@@ -147,24 +147,24 @@
     <b>{{ result.os_description }}:</b>
               {% if result.status == 'SUCCESS' %}
                 {% if result.freshness < 2 %}
-                <td align="center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='green.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='green.png') }}"></img></a></td>
                 {% else %}
-                <td align="center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='green.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='green.png') }}"></img></a></td>
                 {% endif %}
               {% elif result.status == 'FAILURE' %}
                 {% if result.freshness < 2 %}
-                <td align="center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='red.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='red.png') }}"></img></a></td>
                 {% else %}
-                <td align="center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='red.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='red.png') }}"></img></a></td>
                 {% endif %}
               {% elif result.status == 'UNSTABLE' %}
                 {% if result.freshness < 2 %}
-                <td align="center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
                 {% else %}
-                <td align="center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
                 {% endif %}
               {% else %}
-                <td align="center">
+                <td style="text-align: center">
                 {% if result.url %}
                     <a href="{{ result.url }}"><img src="{{ url_for('static', filename='grey.png') }}"></img></a>
                 {% else %}
@@ -195,24 +195,24 @@
 
               {% if result.status == 'SUCCESS' %}
                 {% if result.freshness < 2 %}
-                <td align="center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='green.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='green.png') }}"></img></a></td>
                 {% else %}
-                <td align="center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='green.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='green.png') }}"></img></a></td>
                 {% endif %}
               {% elif result.status == 'FAILURE' %}
                 {% if result.freshness < 2 %}
-                <td align="center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='red.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='red.png') }}"></img></a></td>
                 {% else %}
-                <td align="center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='red.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='red.png') }}"></img></a></td>
                 {% endif %}
               {% elif result.status == 'UNSTABLE' %}
                 {% if result.freshness < 2 %}
-                <td align="center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
                 {% else %}
-                <td align="center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
+                <td style="text-align: center"><a href="{{ result.url }}"><img style="opacity: 0.5" src="{{ url_for('static', filename='yellow.png') }}"></img></a></td>
                 {% endif %}
               {% else %}
-                <td align="center">
+                <td style="text-align: center">
                 {% if result.url %}
                     <a href="{{ result.url }}"><img src="{{ url_for('static', filename='grey.png') }}"></img></a>
                 {% else %}
