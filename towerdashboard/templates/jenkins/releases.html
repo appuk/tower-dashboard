@@ -70,8 +70,8 @@
 
     <div id="collapseIssues" class="collapse show" aria-labelledby="headingIssues" data-parent="#accordionIssues">
       <div class="card-body">
-        <img src="{{ url_for('static', filename='yellow_rectangle.png') }}"  height="30" width="50"></img> No QE assigned
-        <img src="{{ url_for('static', filename='grey_rectangle.png') }}" height="30" width="50"></img> Nobody assigned</br></br>
+        <img src="{{ url_for('static', filename='yellow_rectangle.png') }}" style="height: 30px; width: 30px"></img> No QE assigned
+        <img src="{{ url_for('static', filename='grey_rectangle.png') }}" style="height: 30px; width: 30px"></img> Nobody assigned</br></br>
         <table class="table table-bordered" style="border-collapse: collapse">
           <thead>
             <tr style="border-bottom: double">
@@ -83,9 +83,9 @@
           <tbody>
             {% for issue in version.issues.needs_test_issues %}
             <tr style="{{ 'background-color: #DCDCDC' if issue.assignee == '' else ('background-color: #ffffbb' if issue.qe_or_not==False else '') }}">
-                <td><a href="{{ issue.url }}">{{ issue.title }}</a></td>
-                <td>{{ issue.assignee if issue.assignee != '' else 'Nobody yet' }}</td>
-                <td>{{ issue.updated_at }}</td>
+                <td style="text-align: left" ><a href="{{ issue.url }}">{{ issue.title }}</a></td>
+                <td style="text-align: left" >{{ issue.assignee if issue.assignee != '' else 'Nobody yet' }}</td>
+                <td style="text-align: left" >{{ issue.updated_at }}</td>
             </tr>
             {% endfor %}
           </tbody>
@@ -113,28 +113,28 @@
           <th scope="col">Meaning</th>
         </tr>
       </thead>
-      <tbody align="center">
+      <tbody>
         <tr>
-          <td>
+          <td style="text-align: center" >
             <img src="{{ url_for('static', filename='green.png') }}"></img>
           </td>
-          <td>
+          <td style="text-align: center" >
             No failures or regressions - Ready to ship it.
           </td>
         </tr>
         <tr>
-          <td>
+          <td style="text-align: center" >
             <img src="{{ url_for('static', filename='yellow.png') }}"></img>
           </td>
-          <td>
+          <td style="text-align: center" >
             Almost there - A few failures or regressions. Needs some attention.
           </td>
         </tr>
         <tr>
-          <td>
+          <td style="text-align: center" >
             <img src="{{ url_for('static', filename='red.png') }}"></img>
           </td>
-          <td>
+          <td style="text-align: center" >
             Possibly an infra issue. Needs some attention.
           </td>
         </tr>
